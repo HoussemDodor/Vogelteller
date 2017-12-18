@@ -28,7 +28,7 @@ namespace Models
             }
         }
 
-        Project(string name, string map, Species species)
+        public Project(string name, string map, Species species)
         {
             dateStarted = DateTime.Now;
             this.name = name;

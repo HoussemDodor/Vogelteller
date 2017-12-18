@@ -13,9 +13,9 @@ namespace Logic
         Project p;
         List<Project> projectList;
 
-        public void NewProject(string name, string map, Species species)
+        public Project NewProject(string name, string map, Species species)
         {
-
+            throw new NotImplementedException();
         }
 
         public Project GetProjectByID(int id)

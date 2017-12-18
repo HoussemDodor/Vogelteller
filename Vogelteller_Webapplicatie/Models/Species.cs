@@ -11,7 +11,7 @@ namespace Models
         int ID;
         string name;
 
-        Species(string name)
+        public Species(string name)
         {
             this.name = name;
         }

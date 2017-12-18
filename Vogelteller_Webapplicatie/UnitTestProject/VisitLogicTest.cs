@@ -4,12 +4,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestProject
 {
     [TestClass]
-    public class UnitTestProjectLogic
+    public class VisitLogicTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Test_NewVisit()
         {
-            
+            // Arrange
+
+            // Act
+
+            // Assert
         }
     }
 }

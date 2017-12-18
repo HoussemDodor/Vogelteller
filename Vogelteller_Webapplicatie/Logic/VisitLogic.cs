@@ -13,7 +13,7 @@ namespace Logic
         Visit v;
         List<Visit> visitsList;
 
-        public Visit NewVisit(string fullName)
+        public Visit NewVisit(string fullName, Project p)
         {
             throw new NotImplementedException();
         }
