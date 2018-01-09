@@ -11,29 +11,30 @@ namespace DataLayer
     {
         private IVisitContext context;
 
-        public VisitRepository(IVisitContext context)
+        public VisitRepository(ContextType contextType)
         {
-            this.context = context;
+            switch (contextType)
+            {
+                case ContextType.Database: this.context = new VistSQLContext(); break;
+                case ContextType.Test: this.context = new VistTestContext(); break;
+            }
         }
 
-        public Visit EndVisit(DateTime dateEnded)
+        Visit GetVisitByID(int ID)
         {
-            throw new NotImplementedException();
+            return context.GetVisitByID(ID);
         }
-
-        public List<Visit> GetAllVisitsForCurrentProject(Project p)
+        void NewVisit(string fullName)
         {
-            throw new NotImplementedException();
+            context.NewVisit(fullName);
         }
-
-        public Visit GetVisitByID(int ID)
+        void AddSighting(Visit v, Sighting sighting)
         {
-            throw new NotImplementedException();
+            context.AddSighting(v, sighting);
         }
-
-        public Visit NewVisit(DateTime dateStarted, string fullName)
+        void EndVisit(int ID)
         {
-            throw new NotImplementedException();
+            context.EndVisit(ID);
         }
     }
 }

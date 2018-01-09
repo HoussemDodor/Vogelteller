@@ -11,39 +11,38 @@ namespace DataLayer
     {
         private ISightingContext context;
 
-        public SightingRepository(ISightingContext context)
+        public SightingRepository(ContextType contextType)
         {
-            this.context = context;
+            switch (contextType)
+            {
+                case ContextType.Database: this.context = new SightingSQLContext(); break;
+                case ContextType.Test: this.context = new SightingTestContext(); break;
+            }
         }
 
-        public void ChangeSighting(int xpoint, int ypoint, DateTime timeSeen, Visit visit, Animal animal)
+        void NewSighting(int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
         {
-            throw new NotImplementedException();
+            context.NewSighting(xpoint, ypoint, sightingKind, animal);
         }
-
-        public void DeleteSighting(int ID)
+        void ChangeSighting(Sighting s, int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
         {
-            throw new NotImplementedException();
+            context.ChangeSighting(s, xpoint, ypoint, sightingKind, animal);
         }
-
-        public List<Sighting> GetAllSightingKind()
+        void DeleteSighting(int ID)
         {
-            throw new NotImplementedException();
+            context.DeleteSighting(ID);
         }
-
-        public List<Sighting> GetAllSightings()
+        Sighting GetSightingByID(int ID)
         {
-            throw new NotImplementedException();
+            return context.GetSightingByID(ID);
         }
-
-        public Sighting GetSighting(int ID)
+        List<Sighting> GetAllSightings()
         {
-            throw new NotImplementedException();
+            return context.GetAllSightings();
         }
-
-        public void NewSighting(int xpoint, int ypoint, DateTime timeSeen, Visit visit, Animal animal)
+        List<SightingKind> GetAllSightingKind()
         {
-            throw new NotImplementedException();
+            return context.GetAllSightingKind();
         }
     }
 }

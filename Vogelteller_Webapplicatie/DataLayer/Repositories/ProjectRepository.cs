@@ -11,24 +11,33 @@ namespace DataLayer
     {
         private IProjectContext context;
 
-        public ProjectRepository(IProjectContext context)
+        public ProjectRepository(ContextType contextType)
         {
-            this.context = context;
+            switch (contextType)
+            {
+                case ContextType.Database: this.context = new ProjectSQLContext(); break;
+                case ContextType.Test: this.context = new ProjectTestContext(); break;
+            }
         }
 
+        public void NewProject(string name, string map, Species species)
+        {
+            context.NewProject(name, map, species);
+        }
+        
         public Project GetProjectByID(int ID)
         {
-            throw new NotImplementedException();
+            return context.GetProjectByID(ID);
         }
 
-        public Project EndProject(int ID)
+        public void EndProject(int ID)
         {
-            throw new NotImplementedException();
+            context.EndProject(ID);
         }
 
         public List<Project> GetAllProjects()
         {
-            throw new NotImplementedException();
+            return context.GetAllProjects();
         }
     }
 }

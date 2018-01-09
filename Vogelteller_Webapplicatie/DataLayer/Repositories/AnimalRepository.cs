@@ -21,17 +21,17 @@ namespace DataLayer
         }
         public List<Animal> GetAllAnimals()
         {
-            throw new NotImplementedException();
+            return context.GetAllAnimals();
         }
 
         public List<Animal> GetAllAnimalsBySpecies(Species species)
         {
-            throw new NotImplementedException();
+            return context.GetAllAnimalsBySpecies(species);
         }
 
         public Animal GetAnimal(int ID)
         {
-            throw new NotImplementedException();
+            return context.GetAnimal(ID);
         }
     }
 }

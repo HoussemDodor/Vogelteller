@@ -14,7 +14,11 @@ namespace DataLayer
 
         public SqlConnection Connect()
         {
-            throw new NotImplementedException();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                return conn;
+            }
         }
     }
 }
