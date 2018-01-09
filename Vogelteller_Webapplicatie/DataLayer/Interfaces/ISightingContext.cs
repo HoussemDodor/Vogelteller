@@ -9,12 +9,12 @@ namespace DataLayer
 {
     public interface ISightingContext
     {
-        void NewSighting(int xpoint, int ypoint, DateTime timeSeen, Visit visit, Animal animal);
-        void ChangeSighting(int xpoint, int ypoint, DateTime timeSeen, Visit visit, Animal animal);
+        void NewSighting(int xpoint, int ypoint, SightingKind sightingKind, Animal animal);
+        void ChangeSighting(Sighting s, int xpoint, int ypoint, SightingKind sightingKind, Animal animal);
         void DeleteSighting(int ID);
-        Sighting GetSighting(int ID);
+        Sighting GetSightingByID(int ID);
         List<Sighting> GetAllSightings();
-        List<Sighting> GetAllSightingKind();
+        List<SightingKind> GetAllSightingKind();
 
     }
 }

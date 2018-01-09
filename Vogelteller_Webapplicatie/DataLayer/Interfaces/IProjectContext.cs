@@ -9,8 +9,9 @@ namespace DataLayer
 {
     public interface IProjectContext
     {
+        void NewProject(string name, string map, Species species);
         Project GetProjectByID(int ID);
         List<Project> GetAllProjects();
-        Project EndProject(int ID);
+        void EndProject(int ID);
     }
 }

@@ -8,14 +8,26 @@ namespace Models
 {
     public class Sighting
     {
-        int ID;
-        int Xpoint;
-        int Ypoint;
-        SightingKind sightingKind;
-        Animal animal;
-        DateTime timeSighted;
-            
-        Sighting(int Xpoint, int Ypoint, SightingKind sightingKind, Animal animal)
+        public int ID { get; set; }
+        public int Xpoint { get; set; }
+        public int Ypoint { get; set; }
+        public SightingKind sightingKind { get; set; }
+        public Animal animal { get; set; }
+        private DateTime timeSighted { get; set; }
+
+        public DateTime TimeSighted
+        {
+            get { return timeSighted; }
+            set
+            {
+                if (timeSighted == null)
+                {
+                    timeSighted = value;
+                }
+            }
+        }
+
+        public Sighting(int Xpoint, int Ypoint, SightingKind sightingKind, Animal animal)
         {
             timeSighted = DateTime.Now;
             this.Xpoint = Xpoint;

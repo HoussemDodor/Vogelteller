@@ -10,8 +10,8 @@ namespace DataLayer
     public interface IVisitContext
     {
         Visit GetVisitByID(int ID);
-        Visit NewVisit(DateTime dateStarted, string fullName);
-        Visit EndVisit(DateTime dateEnded);
-        List<Visit> GetAllVisitsForCurrentProject(Project p);        
+        void NewVisit(string fullName);
+        void AddSighting(Visit v, Sighting sighting);
+        void EndVisit(int ID);      
     }
 }

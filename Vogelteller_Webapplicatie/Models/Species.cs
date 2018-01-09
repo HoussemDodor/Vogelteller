@@ -8,11 +8,12 @@ namespace Models
 {
     public class Species
     {
-        int ID;
-        string name;
+        public int ID { get; set; }
+        public string name { get; set; }
 
-        public Species(string name)
+        public Species(int id, string name)
         {
+            ID = id;
             this.name = name;
         }
 

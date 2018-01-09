@@ -7,9 +7,14 @@ using Models;
 
 namespace DataLayer
 {
-    public class VistSQLContext : IVisitContext
+    internal class VistSQLContext : IVisitContext
     {
-        public Visit EndVisit(DateTime dateEnded)
+        public void AddSighting(Visit v, Sighting sighting)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EndVisit(int ID)
         {
             throw new NotImplementedException();
         }
@@ -24,7 +29,7 @@ namespace DataLayer
             throw new NotImplementedException();
         }
 
-        public Visit NewVisit(DateTime dateStarted, string fullName)
+        public void NewVisit(string fullName)
         {
             throw new NotImplementedException();
         }

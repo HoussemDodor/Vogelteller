@@ -8,13 +8,25 @@ namespace Models
 {
     public class Project
     {
-        int ID;
-        string name;
-        string map;
-        DateTime dateStarted;
-        DateTime dateEnded;
-        Species species;
-        List<Visit> VisitsAtThisProject;
+        public int ID { get; set; }
+        public string name { get; set; }
+        public string map { get; set; }
+        private DateTime dateStarted { get; set; }
+        private DateTime dateEnded { get; set; }
+        public Species species { get; set; }
+        public List<Visit> VisitsAtThisProject { get; set; }
+
+        public DateTime DateStarted
+        {
+            get { return dateStarted; }
+            set
+            {
+                if (dateStarted == null)
+                {
+                    dateStarted = value;
+                }
+            }
+        }
 
         public DateTime DateEnded
         {

@@ -10,6 +10,8 @@ namespace Logic
 {
     class AnimalLogic
     {
+        private AnimalRepository repository = new AnimalRepository(LogicSettings.DalContextType);
+
         Animal a;
         List<Animal> animalList;
 

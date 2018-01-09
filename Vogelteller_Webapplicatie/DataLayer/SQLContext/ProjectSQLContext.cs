@@ -7,14 +7,9 @@ using Models;
 
 namespace DataLayer
 {
-    public class ProjectSQLContext : IProjectContext
+    internal class ProjectSQLContext : IProjectContext
     {
-        public Project GetProjectByID(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Project EndProject(int ID)
+        public void EndProject(int ID)
         {
             throw new NotImplementedException();
         }
@@ -22,6 +17,16 @@ namespace DataLayer
         public List<Project> GetAllProjects()
         {
             throw new NotImplementedException();
-        }        
+        }
+
+        public Project GetProjectByID(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NewProject(string name, string map, Species species)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

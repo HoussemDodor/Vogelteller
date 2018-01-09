@@ -8,10 +8,10 @@ namespace Models
 {
     public class SightingKind
     {
-        int ID;
-        string sighting;
-        int points;
-        Species species;
+        public int ID { get; set; }
+        public string sighting { get; set; }
+        public int points { get; set; }
+        public Species species { get; set; }
 
         SightingKind(string sighting, int points, Species species)
         {

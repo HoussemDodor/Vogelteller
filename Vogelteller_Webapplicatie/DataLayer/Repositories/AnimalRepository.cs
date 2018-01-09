@@ -7,13 +7,17 @@ using Models;
 
 namespace DataLayer
 {
-    class AnimalRepository
+    public class AnimalRepository
     {
         private IAnimalContext context;
 
-        public AnimalRepository(IAnimalContext context)
+        public AnimalRepository(ContextType contextType)
         {
-            this.context = context;
+            switch (contextType)
+            {
+                case ContextType.Database: this.context = new AnimalSQLContext(); break;
+                case ContextType.Test: this.context = new AnimalTestContext(); break;
+            }
         }
         public List<Animal> GetAllAnimals()
         {

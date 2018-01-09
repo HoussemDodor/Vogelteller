@@ -7,9 +7,9 @@ using Models;
 
 namespace DataLayer
 {
-    public class SightingSQLContext : ISightingContext
+    internal class SightingSQLContext : ISightingContext
     {
-        public void ChangeSighting(int xpoint, int ypoint, DateTime timeSeen, Visit visit, Animal animal)
+        public void ChangeSighting(Sighting s, int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
         {
             throw new NotImplementedException();
         }
@@ -19,7 +19,7 @@ namespace DataLayer
             throw new NotImplementedException();
         }
 
-        public List<Sighting> GetAllSightingKind()
+        public List<SightingKind> GetAllSightingKind()
         {
             throw new NotImplementedException();
         }
@@ -29,12 +29,12 @@ namespace DataLayer
             throw new NotImplementedException();
         }
 
-        public Sighting GetSighting(int ID)
+        public Sighting GetSightingByID(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public void NewSighting(int xpoint, int ypoint, DateTime timeSeen, Visit visit, Animal animal)
+        public void NewSighting(int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
         {
             throw new NotImplementedException();
         }
