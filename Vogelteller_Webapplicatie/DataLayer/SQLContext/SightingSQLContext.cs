@@ -4,12 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using System.Data.SqlClient;
 
 namespace DataLayer
 {
     internal class SightingSQLContext : ISightingContext
     {
-        public void ChangeSighting(Sighting s, int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
+        Sighting s;
+        DatabaseConnection dbconn = new DatabaseConnection();
+        public void NewSighting(int Xpoint, int Ypoint, int sightingKindID, int animalID, DateTime timeSighted)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeSighting(Sighting s, int Xpoint, int Ypoint, int sightingKindID, int animalID)
         {
             throw new NotImplementedException();
         }
@@ -21,7 +29,23 @@ namespace DataLayer
 
         public List<SightingKind> GetAllSightingKind()
         {
-            throw new NotImplementedException();
+            List<SightingKind> sightingKinds = new List<SightingKind>();
+            string query = "SELECT * From Waarnemings";
+            using (SqlConnection conn = dbconn.Connect)
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            sightingKinds.Add(null);
+                        }
+                    }
+                }
+                dbconn.Connect.Close();
+            }
+            return sightingKinds;
         }
 
         public List<Sighting> GetAllSightings()
@@ -30,11 +54,6 @@ namespace DataLayer
         }
 
         public Sighting GetSightingByID(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NewSighting(int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
         {
             throw new NotImplementedException();
         }

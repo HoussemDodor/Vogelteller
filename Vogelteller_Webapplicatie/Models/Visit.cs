@@ -13,39 +13,23 @@ namespace Models
         private DateTime dateStarted { get; set; }
         private DateTime dateEnded { get; set; }
         public string fullName { get; set; }
+        public int projectID { get; set; }
         public List<Sighting> WaarnemingenTijdensDitBezoek { get; set; }
 
-
-        // property
-        public DateTime DateStarted
-        {
-            get { return dateStarted; }
-            set
-            {
-                if (dateStarted == null)
-                {
-                    dateStarted = value;
-                }
-            }
-        }
-
-        public DateTime DateEnded
-        {
-            get { return dateEnded; }
-            set
-            {
-                if (value >= dateStarted)
-                {
-                    dateStarted = value;
-                }
-            }
-        }
-
         //constructor
-        public Visit(string fullName)
+        public Visit(int ID, string fullName, int projectID, DateTime dateStarted, DateTime dateEnded)
         {
-            dateStarted = DateTime.Now;
+            this.ID = ID;
+            this.dateEnded = dateEnded;
+            this.dateStarted = dateStarted;
             this.fullName = fullName;
+            this.projectID = projectID;
+        }
+        public Visit(string fullName, int projectID, DateTime dateStarted)
+        {
+            this.dateStarted = dateStarted;
+            this.fullName = fullName;
+            this.projectID = projectID;
         }
 
         // methods

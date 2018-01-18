@@ -9,7 +9,7 @@ namespace DataLayer
 {
     public interface IProjectContext
     {
-        void NewProject(string name, string map, Species species);
+        void NewProject(string name, string map, DateTime dateStarted, int speciesID);
         Project GetProjectByID(int ID);
         List<Project> GetAllProjects();
         void EndProject(int ID);

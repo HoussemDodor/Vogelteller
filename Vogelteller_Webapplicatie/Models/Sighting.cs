@@ -11,29 +11,28 @@ namespace Models
         public int ID { get; set; }
         public int Xpoint { get; set; }
         public int Ypoint { get; set; }
-        public SightingKind sightingKind { get; set; }
-        public Animal animal { get; set; }
+        public int sightingKindID { get; set; }
+        public int animalID { get; set; }
         private DateTime timeSighted { get; set; }
 
-        public DateTime TimeSighted
-        {
-            get { return timeSighted; }
-            set
-            {
-                if (timeSighted == null)
-                {
-                    timeSighted = value;
-                }
-            }
-        }
 
-        public Sighting(int Xpoint, int Ypoint, SightingKind sightingKind, Animal animal)
+        public Sighting(int id, int Xpoint, int Ypoint, int sightingKindID, int animalID, DateTime timeSighted)
         {
-            timeSighted = DateTime.Now;
+            ID = id;
             this.Xpoint = Xpoint;
             this.Ypoint = Ypoint;
-            this.sightingKind = sightingKind;
-            this.animal = animal;
+            this.sightingKindID = sightingKindID;
+            this.animalID = animalID;
+            this.timeSighted = timeSighted;
+        }
+
+        public Sighting(int Xpoint, int Ypoint, int sightingKindID, int animalID, DateTime timeSighted)
+        {
+            this.Xpoint = Xpoint;
+            this.Ypoint = Ypoint;
+            this.sightingKindID = sightingKindID;
+            this.animalID = animalID;
+            this.timeSighted = timeSighted;
         }
 
         public override string ToString()

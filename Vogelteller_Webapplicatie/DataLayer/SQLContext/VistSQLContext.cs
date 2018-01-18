@@ -3,12 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using Models;
 
 namespace DataLayer
 {
     internal class VistSQLContext : IVisitContext
     {
+        DatabaseConnection dbconn = new DatabaseConnection();
+        Visit v;
+        public void NewVisit(string fullName, int projectID, DateTime dateStarted)
+        {
+            string query = "INSERT INTO Bezoek(ProjectID, DateStarted, FullName) VALUES(@projectID, @dateStarted, @fullName)";
+            using (SqlConnection conn = dbconn.Connect)
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@projectID", projectID);
+                    cmd.Parameters.AddWithValue("@dateStarted", dateStarted);
+                    cmd.Parameters.AddWithValue("@fullName", fullName);
+                    cmd.ExecuteNonQuery();
+                }
+                dbconn.Connect.Close();
+            }
+        }
+
         public void AddSighting(Visit v, Sighting sighting)
         {
             throw new NotImplementedException();
@@ -19,19 +38,58 @@ namespace DataLayer
             throw new NotImplementedException();
         }
 
-        public List<Visit> GetAllVisitsForCurrentProject(Project p)
-        {
-            throw new NotImplementedException();
-        }
-
         public Visit GetVisitByID(int ID)
         {
-            throw new NotImplementedException();
+            string query = "SELECT * FROM Bezoek WHERE";
+            using (SqlConnection conn = dbconn.Connect)
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            v = CreateVisitFromReader(reader);
+                        }
+                    }
+                }
+                dbconn.Connect.Close();
+            }
+            return v;
         }
 
-        public void NewVisit(string fullName)
+        public List<Visit> GetAllVisits()
         {
-            throw new NotImplementedException();
+            string query = "SELECT * FROM Bezoek";
+            List<Visit> AllVisits = new List<Visit>();
+            using (SqlConnection conn = dbconn.Connect)
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            AllVisits.Add(CreateVisitFromReader(reader));
+                        }
+                    }
+                }
+                dbconn.Connect.Close();
+            }
+            return AllVisits;
+        }
+
+
+        private Visit CreateVisitFromReader(SqlDataReader reader)
+        {
+            return new Visit
+                (
+                    Convert.ToInt32(reader["ID"]),
+                    Convert.ToString(reader["FullName"]),
+                    Convert.ToInt32(reader["ProjectID"]),
+                    Convert.ToDateTime(reader["DateStarted"]),
+                    Convert.ToDateTime(reader["DateEnded"])                   
+                );
         }
     }
 }

@@ -24,9 +24,9 @@ namespace DataLayer
         {
             return context.GetVisitByID(ID);
         }
-        void NewVisit(string fullName)
+        void NewVisit(string fullName, int projectID, DateTime dateStarted)
         {
-            context.NewVisit(fullName);
+            context.NewVisit(fullName, projectID, dateStarted);
         }
         void AddSighting(Visit v, Sighting sighting)
         {

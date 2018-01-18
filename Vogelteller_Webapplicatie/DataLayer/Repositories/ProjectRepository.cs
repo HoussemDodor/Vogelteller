@@ -20,9 +20,9 @@ namespace DataLayer
             }
         }
 
-        public void NewProject(string name, string map, Species species)
+        public void NewProject(string name, string map, DateTime dateStarted, int speciesID)
         {
-            context.NewProject(name, map, species);
+            context.NewProject(name, map, dateStarted, speciesID);
         }
         
         public Project GetProjectByID(int ID)

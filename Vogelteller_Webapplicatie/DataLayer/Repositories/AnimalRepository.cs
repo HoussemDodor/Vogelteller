@@ -24,9 +24,9 @@ namespace DataLayer
             return context.GetAllAnimals();
         }
 
-        public List<Animal> GetAllAnimalsBySpecies(Species species)
+        public List<Animal> GetAllAnimalsBySpecies(int speciesID)
         {
-            return context.GetAllAnimalsBySpecies(species);
+            return context.GetAllAnimalsBySpecies(speciesID);
         }
 
         public Animal GetAnimal(int ID)

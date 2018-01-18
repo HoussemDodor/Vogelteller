@@ -15,19 +15,19 @@ namespace Logic
         Animal a;
         List<Animal> animalList;
 
-        public List<Animal> GetAllAnimals(int speciesID)
+        public List<Animal> GetAllAnimals()
         {
-            throw new NotImplementedException();
+            return repository.GetAllAnimals();
         }
 
         public List<Animal> GetAllAnimalsBySpecies(int speciesID)
         {
-            throw new NotImplementedException();
+            return repository.GetAllAnimalsBySpecies(speciesID);
         }
 
         public Animal SelectAnimal(int id)
         {
-            throw new NotImplementedException();
+            return repository.GetAnimal(id);
         }
     }
 }

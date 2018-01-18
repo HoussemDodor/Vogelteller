@@ -20,13 +20,13 @@ namespace DataLayer
             }
         }
 
-        void NewSighting(int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
+        void NewSighting(int Xpoint, int Ypoint, int sightingKindID, int animalID, DateTime timeSighted)
         {
-            context.NewSighting(xpoint, ypoint, sightingKind, animal);
+            context.NewSighting(Xpoint, Ypoint, sightingKindID, animalID, timeSighted);
         }
-        void ChangeSighting(Sighting s, int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
+        void ChangeSighting(Sighting s, int Xpoint, int Ypoint, int sightingKindID, int animalID)
         {
-            context.ChangeSighting(s, xpoint, ypoint, sightingKind, animal);
+            context.ChangeSighting(s, Xpoint, Ypoint, sightingKindID, animalID);
         }
         void DeleteSighting(int ID)
         {

@@ -11,13 +11,21 @@ namespace Models
         public int ID { get; set; }
         public string sighting { get; set; }
         public int points { get; set; }
-        public Species species { get; set; }
+        public int speciesID { get; set; }
 
-        SightingKind(string sighting, int points, Species species)
+        public SightingKind(int id, string sighting, int points, int speciesID)
+        {
+            ID = id;
+            this.sighting = sighting;
+            this.points = points;
+            this.speciesID = speciesID;
+        }
+
+        public SightingKind(string sighting, int points, int speciesID)
         {
             this.sighting = sighting;
             this.points = points;
-            this.species = species;
+            this.speciesID = speciesID;
         }
 
         public override string ToString()

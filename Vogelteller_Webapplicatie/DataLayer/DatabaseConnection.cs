@@ -10,14 +10,27 @@ namespace DataLayer
 {
     public class DatabaseConnection
     {
-        private const string connectionString = "";
+        private const string connectionString = "Data Source=mssql.fhict.local;Initial Catalog=dbi365095;Persist Security Info=True;User ID=dbi365095;Password=Blyker887";
 
-        public SqlConnection Connect()
+        public SqlConnection Connect
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            get
             {
-                conn.Open();
-                return conn;
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception e)
+                {
+                    connection.Close();
+                }
+                return connection;
+            }
+            set
+            {
+                Connect = value;
             }
         }
     }

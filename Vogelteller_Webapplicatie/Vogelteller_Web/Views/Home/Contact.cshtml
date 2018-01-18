@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title</h2>
+
+<address>
+    Hogeschool Fontys<br />
+    Eindhoven, 6042XT<br />
+    <abbr>Telefoon: </abbr>
+    0475 001 002
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:h.dodor@student.fontys.nl">h.dodor@student.fontys.nl</a><br />
+</address>
+
+<html>
+<head>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h3>Hogeschool Fontys Locatie</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+          var uluru = {lat: 51.4519953, lng: 5.481224};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFgGEZE01x1CuwFW_H-KNplfqSw2gbX_4&callback=initMap">
+    </script>
+</body>
+</html>

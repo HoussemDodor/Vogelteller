@@ -1,0 +1,18 @@
+﻿.CenterDiv {
+    width: 100%;
+    border: dashed;
+    padding: 1%;
+}
+
+.HeaderHomePagina {
+    text-align: center;
+    margin:auto;
+}
+
+.ProjectButton {
+    border-radius: 10px;
+    margin-left: 40%;
+    width: 20%;
+    margin-bottom: 0.5%;
+    background-color: lightgrey
+}

@@ -10,7 +10,7 @@ namespace DataLayer
     public interface IAnimalContext
     {
         List<Animal> GetAllAnimals();
-        List<Animal> GetAllAnimalsBySpecies(Species species);
+        List<Animal> GetAllAnimalsBySpecies(int speciesID);
         Animal GetAnimal(int ID);
     }
 }
