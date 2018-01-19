@@ -52,8 +52,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="SightingLogicTest.cs" />
-    <Compile Include="VisitLogicTest.cs" />
     <Compile Include="ProjectLogicTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

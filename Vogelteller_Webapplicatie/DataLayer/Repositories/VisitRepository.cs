@@ -20,21 +20,32 @@ namespace DataLayer
             }
         }
 
-        Visit GetVisitByID(int ID)
+        public Visit GetVisitByID(int ID)
         {
             return context.GetVisitByID(ID);
         }
-        void NewVisit(string fullName, int projectID, DateTime dateStarted)
+        public void NewVisit(string fullName, int projectID, DateTime dateStarted)
         {
             context.NewVisit(fullName, projectID, dateStarted);
         }
-        void AddSighting(Visit v, Sighting sighting)
+        public void AddSighting(Visit v, Sighting sighting)
         {
             context.AddSighting(v, sighting);
         }
-        void EndVisit(int ID)
+        public void EndVisit(int ID)
         {
             context.EndVisit(ID);
         }
+
+        public List<Visit> GetAllVisits()
+        {
+           return context.GetAllVisits();
+        }
+
+        public List<Visit> GetAllVisitsByProject(int projectID)
+        {
+            return context.GetAllVisitsByProject(projectID);
+        }
+        
     }
 }

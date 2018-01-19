@@ -8,33 +8,27 @@ namespace UnitTestProject
     [TestClass]
     public class ProjectLogicTest
     {
-            [TestMethod]
-        public void Test_NewProject()
+        ProjectLogic pl = new ProjectLogic();
+
+        [TestMethod]
+        public void NewProjectAndGetAllProjects()
         {
             // Arrange & Act
-            Species species = new Species(1,"Vogel");
-            Project expected = new Project("Roermond", "link", species);
-            ProjectLogic pl = new ProjectLogic();
+            Species species = new Species(1, "Vogel");
+            Project expected = new Project("Roermond", "link", DateTime.Now, species.ID);
+            int x = pl.GetAllProjects().Count;
+            pl.NewProject("Roermond", "link", DateTime.Now, species.ID);
 
             // Assert
-            // Assert.AreEqual("Roermond", actual.City);
-            Project actual = pl.NewProject("Roermond", "link", species);
-            Assert.AreEqual(expected.ID, actual.ID);
-            Assert.AreEqual(expected.DateStarted, actual.DateStarted);
-            Assert.AreEqual(expected.name, actual.name);
+            Assert.AreEqual(x + 1, pl.GetAllProjects().Count);
         }
 
-            [TestMethod]
-        public void Test_EndProject_Succes()
+        [TestMethod]
+        public void GetProjectByID()
         {
-            //Arrange
-
-        }
-
-            [TestMethod]
-        public void Test_EndProject_Fail()
-        {
-
+            Random r = new Random();
+            int x = r.Next(1, 4);
+            Assert.AreEqual(x, pl.GetProjectByID(x).ID);
         }
     }
 }

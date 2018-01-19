@@ -10,32 +10,32 @@ namespace Logic
 {
     public class ProjectLogic
     {
-        Project p;
-        List<Project> projectList;
+        private ProjectRepository repository = new ProjectRepository(LogicSettings.DalContextType);
+        private VisitRepository vRepository = new VisitRepository(LogicSettings.DalContextType);
 
-        public Project NewProject(string name, string map, Species species)
+        public void NewProject(string name, string map, DateTime dateStarted, int speciesID)
         {
-            throw new NotImplementedException();
+            repository.NewProject(name, map, dateStarted, speciesID);
         }
 
         public Project GetProjectByID(int id)
         {
-            throw new NotImplementedException();
+            return repository.GetProjectByID(id);
         }
 
         public List<Project> GetAllProjects()
         {
-            throw new NotImplementedException();
+            return repository.GetAllProjects(); 
+        }
+        
+        public void EndProject(int ID)
+        {
+            repository.EndProject(ID);
         }
 
         public bool CheckRequirements(Project p)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool EndProject(Project p)
-        {
-            throw new NotImplementedException();
+            if (vRepository.GetAllVisitsByProject(p.ID).Count() >= 10) { return true; } else { return false; }
         }
     }
 }

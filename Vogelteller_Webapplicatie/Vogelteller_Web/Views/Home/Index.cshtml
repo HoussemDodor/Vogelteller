@@ -11,9 +11,9 @@
         Home Pagina
     </h2>
     <button type="button" class="ProjectButton">
-        Nieuw Project
+        @Html.ActionLink("Create Project", "Create", "Project")
     </button>
     <button type="button" class="ProjectButton">
-        Bestaand Project
+        @Html.ActionLink("Bestaande Projecten", "Index", "Project")
     </button>
 </div>

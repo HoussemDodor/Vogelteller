@@ -13,12 +13,12 @@ namespace DataLayer
         
         public AnimalTestContext()
         {
-            animals.Add(new Animal(1, "Zwaan", "ZWA", DateTime.Now, Vogel));
-            animals.Add(new Animal(2, "Raaf", "RAA", DateTime.Now, Vogel));
-            animals.Add(new Animal(3, "Mus", "MUS", DateTime.Now, Vogel));
-            animals.Add(new Animal(4, "Bruine Beer", "BBR", DateTime.Now, Zoogdier));
-            animals.Add(new Animal(5, "Leeuw", "LEE", DateTime.Now, Zoogdier));
-            animals.Add(new Animal(6, "Tijger", "TIJ", DateTime.Now, Zoogdier));
+            animals.Add(new Animal(1,"Zwaan", "ZWA", DateTime.Now, DateTime.Now.AddDays(150), 1));
+            animals.Add(new Animal(2, "Raaf", "RAA", DateTime.Now, DateTime.Now.AddDays(150), 1));
+            animals.Add(new Animal(3, "Mus", "MUS", DateTime.Now, DateTime.Now.AddDays(150), 1));
+            animals.Add(new Animal(4, "Bruine Beer", "BBR", DateTime.Now, DateTime.Now.AddDays(150), 2));
+            animals.Add(new Animal(5, "Leeuw", "LEE", DateTime.Now, DateTime.Now.AddDays(150), 2));
+            animals.Add(new Animal(6, "Tijger", "TIJ", DateTime.Now, DateTime.Now.AddDays(150), 2));
         }
 
         public List<Animal> GetAllAnimals()
@@ -26,12 +26,12 @@ namespace DataLayer
             return animals;
         }
 
-        public List<Animal> GetAllAnimalsBySpecies(Species species)
+        public List<Animal> GetAllAnimalsBySpecies(int speciesID)
         {
             List<Animal> Sorted = new List<Animal>();
             foreach (Animal a in animals)
             {
-                if (a.species.ID == species.ID)
+                if (a.speciesID == speciesID)
                 {
                     Sorted.Add(a);
                 }

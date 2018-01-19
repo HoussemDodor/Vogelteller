@@ -14,5 +14,6 @@ namespace DataLayer
         void AddSighting(Visit v, Sighting sighting);
         void EndVisit(int ID);
         List<Visit> GetAllVisits();
+        List<Visit> GetAllVisitsByProject(int projectID);
     }
 }

@@ -79,6 +79,30 @@ namespace DataLayer
             return AllVisits;
         }
 
+        public List<Visit> GetAllVisitsByProject(int projectID)
+        {
+            string query = "SELECT * FROM Bezoek WHERE ProjectID = @projectID";
+            List<Visit> visitslist = new List<Visit>();
+
+            using (SqlConnection conn = dbconn.Connect)
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@projectID", projectID);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            visitslist.Add(CreateVisitFromReader(reader));
+                        }
+                    }
+                }
+                dbconn.Connect.Close();
+            }
+            return visitslist;
+        }
+
 
         private Visit CreateVisitFromReader(SqlDataReader reader)
         {

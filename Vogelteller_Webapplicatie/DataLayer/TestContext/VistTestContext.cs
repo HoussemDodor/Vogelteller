@@ -11,10 +11,9 @@ namespace DataLayer
     {
         List<Visit> visits = new List<Visit>();
 
-        public void NewVisit(string fullName)
+        public void NewVisit(string fullName, int projectID, DateTime datestarted)
         {
-            Visit v = new Visit(fullName);
-            v.DateStarted = DateTime.Now;
+            Visit v = new Visit(fullName, projectID, datestarted);
             visits.Add(v);
         }
 
@@ -29,7 +28,7 @@ namespace DataLayer
             {
                 if (v.ID == ID)
                 {
-                    v.DateEnded = DateTime.Now;
+                    v.dateEnded = DateTime.Now;
                 }
             }
         }
@@ -49,6 +48,24 @@ namespace DataLayer
                 }
             }
             return null;
-        }        
+        }      
+        
+        public List<Visit> GetAllVisits()
+        {
+            return visits;
+        }  
+
+        public List<Visit> GetAllVisitsByProject(int projectID)
+        {
+            List<Visit> sortedlist = new List<Visit>();
+            foreach (Visit v in visits)
+            {
+                if (v.projectID == projectID)
+                {
+                    sortedlist.Add(v);
+                }
+            }
+            return sortedlist;
+        }
     }
 }

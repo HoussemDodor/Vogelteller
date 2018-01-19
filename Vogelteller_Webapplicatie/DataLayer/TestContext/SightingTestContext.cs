@@ -12,18 +12,18 @@ namespace DataLayer
         List<Sighting> sightings = new List<Sighting>();
         List<SightingKind> sightingKinds = new List<SightingKind>();
 
-        public void NewSighting(int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
+        public void NewSighting(int xpoint, int ypoint, int sightingKindID, int animalID, DateTime timeSighted)
         {
-            Sighting s = new Sighting(xpoint, ypoint, sightingKind, animal);
+            Sighting s = new Sighting(xpoint, ypoint, sightingKindID, animalID, timeSighted);
             sightings.Add(s);
         }
 
-        public void ChangeSighting(Sighting s, int xpoint, int ypoint, SightingKind sightingKind, Animal animal)
+        public void ChangeSighting(Sighting s, int Xpoint, int Ypoint, int sightingKindID, int animalID)
         {
-            s.Xpoint = xpoint;
-            s.Ypoint = ypoint;
-            s.sightingKind = sightingKind;
-            s.animal = animal;
+            s.Xpoint = Xpoint;
+            s.Ypoint = Ypoint;
+            s.sightingKindID = sightingKindID;
+            s.animalID = animalID;
         }
 
         public void DeleteSighting(int ID)

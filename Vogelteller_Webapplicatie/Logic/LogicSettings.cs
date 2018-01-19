@@ -9,6 +9,6 @@ namespace Logic
 {
     static class LogicSettings
     {
-        public static ContextType DalContextType { get; set; } = ContextType.Database;
+        public static ContextType DalContextType { get; set; } = ContextType.Test;
     }
 }

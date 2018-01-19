@@ -83,7 +83,9 @@ namespace DataLayer
 
         private Project CreateProjectFromReader(SqlDataReader reader)
         {
-            return new Project
+            if (reader["DateEnded"] == null)
+            {
+                return new Project
                 (
                     Convert.ToInt32(reader["ID"]),
                     Convert.ToString(reader["Naam"]),
@@ -92,6 +94,18 @@ namespace DataLayer
                     Convert.ToDateTime(reader["DateEnded"]),
                     Convert.ToInt32(reader["DiersoortID"])
                 );
+            }
+            else
+            {
+                return new Project
+                (
+                    Convert.ToInt32(reader["ID"]),
+                    Convert.ToString(reader["Naam"]),
+                    Convert.ToString(reader["Map"]),
+                    Convert.ToDateTime(reader["DateStarted"]),
+                    Convert.ToInt32(reader["DiersoortID"])
+                );
+            }     
         }
     }
 }

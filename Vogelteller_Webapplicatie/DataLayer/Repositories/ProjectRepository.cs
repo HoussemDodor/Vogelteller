@@ -7,7 +7,7 @@ using Models;
 
 namespace DataLayer
 {
-    class ProjectRepository
+    public class ProjectRepository
     {
         private IProjectContext context;
 

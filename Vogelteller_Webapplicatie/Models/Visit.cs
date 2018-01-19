@@ -10,8 +10,8 @@ namespace Models
     {
         //field
         public int ID { get; set; }
-        private DateTime dateStarted { get; set; }
-        private DateTime dateEnded { get; set; }
+        public DateTime dateStarted { get; set; }
+        public DateTime dateEnded { get; set; }
         public string fullName { get; set; }
         public int projectID { get; set; }
         public List<Sighting> WaarnemingenTijdensDitBezoek { get; set; }

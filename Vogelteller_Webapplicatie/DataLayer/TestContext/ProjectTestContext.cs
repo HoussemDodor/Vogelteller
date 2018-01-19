@@ -11,9 +11,17 @@ namespace DataLayer
     {
         List<Project> projects = new List<Project>();
 
-        public void NewProject(string name, string map, Species species)
+        public ProjectTestContext()
         {
-            Project p = new Project(name, map, species);
+            projects.Add(new Project(1, "Roermond", "IMGUR", DateTime.Now, 1));
+            projects.Add(new Project(2, "weert", "IMGUR", DateTime.Now, 1));
+            projects.Add(new Project(3, "eindhoven", "IMGUR", DateTime.Now, 2));
+            projects.Add(new Project(4, "hrost", "IMGUR", DateTime.Now, 2));
+        }
+
+        public void NewProject(string name, string map, DateTime dateStarted, int speciesID)
+        {
+            Project p = new Project(name, map, dateStarted, speciesID);
             projects.Add(p);
         }
 
@@ -23,7 +31,7 @@ namespace DataLayer
             {
                 if (p.ID == ID)
                 {
-                    p.DateEnded = DateTime.Now;
+                    p.dateEnded = DateTime.Now;
                 }
             }
         }
